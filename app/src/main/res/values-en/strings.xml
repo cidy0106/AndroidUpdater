@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Updater</string>
+
+
+    <string name="err_report">Error Report</string>
+    <string name="err_exit">Has a little problem,you can send me a email</string>
+
+    <string name="choosefiledialog">Choose File or Dir</string>
+    <string name="currentchoose">Current</string>
+    <string name="currentfilelist">List</string>
+    <string name="choosefileparent">Parent</string>
+
+
+    <string name="pulldown_more">More</string>
+    <string name="pulldown_loadingmore">Loading More...</string>
+    <string name="pulldown_loadover">Load Over</string>
+    <string name="pulldown_refreshpulldown">Pulldown for Refresh.,,,..,mm,,mvcm,,.</string>
+    <string name="pulldown_updatedtime">Update:</string>
+    <string name="pulldown_refreshing">Refreshing...</string>
+    <string name="pulldown_refreshrelease">Release to Refresh</string>
+
+
+
+    <string name="soft_update_no">There is no updated version</string>
+    <string name="soft_update_title">Version Update</string>
+    <string name="soft_update_info">Update now?</string>
+    <string name="soft_update_updatebtn">Update</string>
+    <string name="soft_update_later">Not</string>
+    <string name="soft_updating">Updating</string>
+    <string name="soft_update_cancel">Cancel</string>
+    <string name="soft_update_downloading">Downloading</string>
+    <string name="soft_update_downloadfail">Fail</string>
+    <string name="soft_update_downloadover">Done</string>
+    <string name="soft_update_updatefail">Fail</string>
+    <string name="soft_update_updateover">Success</string>
+
+    <string name="str_waiting_tips">Loading...</string>
+</resources>

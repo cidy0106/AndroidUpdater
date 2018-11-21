@@ -1,0 +1,10 @@
+<resources>
+<!-- height of a normal list item in edit playlist mode -->
+    <dimen name="normal_height">64dip</dimen>
+    <!-- height of an expanded list item in edit playlist mode -->
+    <dimen name="expanded_height">128dip</dimen>
+    
+    <dimen name="pulldown_headerview_height">70dp</dimen>
+    <dimen name="pulldown_move_deviation">38dp</dimen>
+    <dimen name="pulldown_auto_incremental">6dp</dimen>
+</resources>

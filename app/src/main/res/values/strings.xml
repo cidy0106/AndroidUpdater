@@ -1,0 +1,37 @@
+<resources>
+
+    <string name="app_name">Updater</string>
+	<string name="err_report">异常反馈</string>
+	<string name="err_exit">发生点小问题，重启再试，或者发邮件反馈给我吧</string>
+
+
+	<string name="choosefiledialog">文件或目录选择框</string>
+	<string name="currentchoose">当前选择</string>
+	<string name="currentfilelist">文件或目录列表</string>
+	<string name="choosefileparent">上一级目录</string>
+
+
+	<string name="pulldown_more">更多</string>
+	<string name="pulldown_loadingmore">加载更多中...</string>
+	<string name="pulldown_loadover">已加载完成</string>
+	<string name="pulldown_refreshpulldown">下拉刷新</string>
+	<string name="pulldown_updatedtime">更新于：</string>
+	<string name="pulldown_refreshing">正在刷新中...</string>
+	<string name="pulldown_refreshrelease">松开可以刷新</string>
+
+
+	<string name="soft_update_no">暂时没有更新版本</string>
+	<string name="soft_update_title">更新版本</string>
+	<string name="soft_update_info">有更新版本，是否现在更新</string>
+	<string name="soft_update_updatebtn">更新</string>
+	<string name="soft_update_later">暂不更新</string>
+	<string name="soft_updating">正在更新</string>
+	<string name="soft_update_cancel">取消更新</string>
+	<string name="soft_update_downloading">正在下载</string>
+	<string name="soft_update_downloadfail">下载失败</string>
+	<string name="soft_update_downloadover">下载完成</string>
+	<string name="soft_update_updatefail">更新失败</string>
+	<string name="soft_update_updateover">更新完成</string>
+
+	<string name="str_waiting_tips">请稍候...</string>
+</resources>
