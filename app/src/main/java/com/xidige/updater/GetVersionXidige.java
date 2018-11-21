@@ -1,12 +1,12 @@
 package com.xidige.updater;
 
+import com.google.gson.stream.JsonReader;
+
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-
-import com.google.gson.stream.JsonReader;
 
 public class GetVersionXidige implements IGetVersion {
 	private static final String TAG="GetVersionXidige";

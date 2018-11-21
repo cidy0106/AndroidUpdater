@@ -1,12 +1,5 @@
 package com.xidige.updater.view;
 
-import java.io.File;
-import java.io.FileFilter;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -25,6 +18,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.xidige.updater.R;
+
+import java.io.File;
+import java.io.FileFilter;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public class FileChooseView extends AlertDialog implements OnClickListener, OnItemClickListener {
 	private View contentView=null;
@@ -58,16 +58,16 @@ public class FileChooseView extends AlertDialog implements OnClickListener, OnIt
 	private void initView() {
 		// TODO Auto-generated method stub
 		contentView=LayoutInflater.from(getContext()).inflate(R.layout.choosefiledialog_layout, null);
-		currentNameTextView=(TextView) contentView.findViewById(R.id.textView_current_file_name);
-		currentPathTextView=(TextView) contentView.findViewById(R.id.textView_current_file_path);
-		okButton=(Button) contentView.findViewById(R.id.button_choose_ok);
-		cancelButton=(Button) contentView.findViewById(R.id.button_choose_cancel);
-		listView=(ListView) contentView.findViewById(R.id.listView_file_tochoose);
+        currentNameTextView = contentView.findViewById(R.id.textView_current_file_name);
+        currentPathTextView = contentView.findViewById(R.id.textView_current_file_path);
+        okButton = contentView.findViewById(R.id.button_choose_ok);
+        cancelButton = contentView.findViewById(R.id.button_choose_cancel);
+        listView = contentView.findViewById(R.id.listView_file_tochoose);
 		listView.setOnItemClickListener(this);
 		listView.setAdapter(adapter);
 		okButton.setOnClickListener(this);
 		cancelButton.setOnClickListener(this);
-		parentButton=(Button) contentView.findViewById(R.id.button_parent);
+        parentButton = contentView.findViewById(R.id.button_parent);
 		parentButton.setOnClickListener(this);
 		
 //		progressDialog=ProgressDialog.show(getContext(), null, null);
@@ -110,10 +110,10 @@ public class FileChooseView extends AlertDialog implements OnClickListener, OnIt
 		}
 	}
 	public interface OkEventListener{
-		public void onOk(File file);
+        void onOk(File file);
 	}
 	public interface CancelEventListener{
-		public void onCancel();
+        void onCancel();
 	}
 	class MyChooseAdapter extends BaseAdapter{
 
@@ -149,8 +149,8 @@ public class FileChooseView extends AlertDialog implements OnClickListener, OnIt
 				if(convertView==null){
 					convertView=LayoutInflater.from(parent.getContext()).inflate(R.layout.choosefile_item, null);
 					viewHolder=new ViewHolder();
-					
-					viewHolder.file=(TextView) convertView.findViewById(R.id.textView_file);
+
+                    viewHolder.file = convertView.findViewById(R.id.textView_file);
 					convertView.setTag(viewHolder);
 				}else{
 					viewHolder=(ViewHolder) convertView.getTag();
@@ -226,8 +226,8 @@ public class FileChooseView extends AlertDialog implements OnClickListener, OnIt
 			default:
 				break;
 			}
-		};
-	};
+        }
+    };
 	public void setOkEventListener(OkEventListener okEventListener) {
 		this.okEventListener = okEventListener;
 	}

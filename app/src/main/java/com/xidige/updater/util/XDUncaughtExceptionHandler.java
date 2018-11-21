@@ -1,14 +1,13 @@
 package com.xidige.updater.util;
 
-import java.io.PrintStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.lang.Thread.UncaughtExceptionHandler;
+import android.content.Context;
+import android.widget.Toast;
 
 import com.xidige.updater.R;
 
-import android.content.Context;
-import android.widget.Toast;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.lang.Thread.UncaughtExceptionHandler;
 
 public class XDUncaughtExceptionHandler implements UncaughtExceptionHandler {
 	private Context context;

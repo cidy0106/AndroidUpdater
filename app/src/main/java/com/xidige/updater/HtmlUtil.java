@@ -1,11 +1,11 @@
 package com.xidige.updater;
 
+import android.util.Log;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-
-import android.util.Log;
 
 public class HtmlUtil {
 	private static final String TAG="com.xidige.updater.HtmlUtil";

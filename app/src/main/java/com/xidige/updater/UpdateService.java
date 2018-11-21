@@ -1,15 +1,5 @@
 package com.xidige.updater;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -21,6 +11,15 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.util.Log;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 /**
  * fileurl
  * @author lenovo
@@ -133,9 +132,9 @@ public class UpdateService extends Service {
 					fos.write(buf, 0, numread);
 					count += numread;
 					//为了防止频繁的通知导致应用吃紧，百分比增加10才通知一次
-                    if((downloadCount == 0)||(int) (count*100/length)-10>downloadCount){ 
+					if ((downloadCount == 0) || count * 100 / length - 10 > downloadCount) {
                         downloadCount += 10;
-                        updateNotification.setLatestEventInfo(UpdateService.this, getString(R.string.soft_update_downloading), (int)(count*100/length)+"%", updatePendingIntent);
+						updateNotification.setLatestEventInfo(UpdateService.this, getString(R.string.soft_update_downloading), count * 100 / length + "%", updatePendingIntent);
                         updateNotificationManager.notify(0, updateNotification);
                     }   
 				}

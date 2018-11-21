@@ -30,9 +30,9 @@ public class WaitingProgressDialog extends Dialog {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		View view = LayoutInflater.from(getContext()).inflate(R.layout.progress_waiting_layout, null);  
-		titleTextView = (TextView) view.findViewById(R.id.progress_title_textView);
-		imageView=(ImageView) view.findViewById(R.id.progress_imageView);
+		View view = LayoutInflater.from(getContext()).inflate(R.layout.progress_waiting_layout, null);
+        titleTextView = view.findViewById(R.id.progress_title_textView);
+        imageView = view.findViewById(R.id.progress_imageView);
         setContentView(view);
         animation=AnimationUtils.loadAnimation(getContext(), R.anim.waiting_animation);        
 	}

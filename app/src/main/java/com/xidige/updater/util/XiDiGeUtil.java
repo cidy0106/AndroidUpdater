@@ -1,11 +1,5 @@
 package com.xidige.updater.util;
 
-import java.io.File;
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Random;
-
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +7,12 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Environment;
+
+import java.io.File;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
 
 public class XiDiGeUtil {
 	/**
@@ -24,10 +24,9 @@ public class XiDiGeUtil {
 	    String versionName = "";    
 	    try {    
 	        // ---get the package info---    
-	        PackageManager pm = context.getPackageManager();    
-	        PackageInfo pi = pm.getPackageInfo(context.getPackageName(), 0);    
-	         ;    
-	        if (pi.versionName != null) {    
+	        PackageManager pm = context.getPackageManager();
+            PackageInfo pi = pm.getPackageInfo(context.getPackageName(), 0);
+            if (pi.versionName != null) {
 	        	versionName = pi.versionName;    
 	        }    
 	    } catch (Exception e) {

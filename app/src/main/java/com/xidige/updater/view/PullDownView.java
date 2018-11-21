@@ -1,11 +1,5 @@
 package com.xidige.updater.view;
 
-import java.lang.reflect.Method;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
@@ -24,6 +18,12 @@ import android.widget.TextView;
 
 import com.xidige.updater.R;
 import com.xidige.updater.view.ScrollOverListView.OnScrollOverListener;
+
+import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * 下拉刷新控件</br>
@@ -247,9 +247,9 @@ public class PullDownView extends LinearLayout implements OnScrollOverListener, 
 		
 		mDefaultHeaderViewHeight = getResources().getDimensionPixelSize(R.dimen.pulldown_headerview_height);
 		mMoveDeviation = getResources().getDimensionPixelSize(R.dimen.pulldown_move_deviation);
-		mHeaderTextView = (TextView) mHeaderView.findViewById(R.id.pulldown_header_text);
-		mHeaderArrowView = (ImageView) mHeaderView.findViewById(R.id.pulldown_header_arrow);
-		mHeaderViewDateView = (TextView) mHeaderView.findViewById(R.id.pulldown_header_date);
+        mHeaderTextView = mHeaderView.findViewById(R.id.pulldown_header_text);
+        mHeaderArrowView = mHeaderView.findViewById(R.id.pulldown_header_arrow);
+        mHeaderViewDateView = mHeaderView.findViewById(R.id.pulldown_header_date);
 		mHeaderLoadingView = mHeaderView.findViewById(R.id.pulldown_header_loading);
 		
 		// 注意，图片旋转之后，再执行旋转，坐标会重新开始计算
@@ -272,7 +272,7 @@ public class PullDownView extends LinearLayout implements OnScrollOverListener, 
 		mEnableLoadMore = true;
 		mFooterView = LayoutInflater.from(mContext).inflate(R.layout.pulldown_footer, null);
 		mFooterView.setVisibility(View.GONE);
-		mFooterTextView = (TextView) mFooterView.findViewById(R.id.pulldown_footer_text);
+        mFooterTextView = mFooterView.findViewById(R.id.pulldown_footer_text);
 		mFooterLoadingView = mFooterView.findViewById(R.id.pulldown_footer_loading);
 		mFooterView.setOnClickListener(new OnClickListener() {
 			@Override
@@ -514,10 +514,9 @@ public class PullDownView extends LinearLayout implements OnScrollOverListener, 
 		final int lastVisiblePosition = mListView.getLastVisiblePosition() - mListView.getFooterViewsCount();
 		final int visibleItemCount = lastVisiblePosition - firstVisiblePosition + 1;
 		final int totalItemCount = mListView.getCount() - mListView.getFooterViewsCount();
-		
-		if(visibleItemCount < totalItemCount) return true;
-		return false;
-	}
+
+        return visibleItemCount < totalItemCount;
+    }
 	
 	@Override
 	public boolean onInterceptTouchEvent(MotionEvent ev) {
