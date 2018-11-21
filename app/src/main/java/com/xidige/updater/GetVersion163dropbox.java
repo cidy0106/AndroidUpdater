@@ -1,18 +1,12 @@
 package com.xidige.updater;
 
-import android.util.Log;
-
 import com.google.gson.stream.JsonReader;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.regex.Matcher;
@@ -27,9 +21,7 @@ import java.util.regex.Pattern;
  * 
  */
 public class GetVersion163dropbox implements IGetVersion {
-	private static final String TAG = "com.xidige.updater.GetVersion163dropbox";
-
-	private HttpClient httpClient = new DefaultHttpClient();
+	private static Logger logger=LoggerFactory.getLogger(GetVersion163dropbox.class);
 
 	/**
 	 * 存放有应用版本信息的url，这里是163上的
@@ -38,14 +30,14 @@ public class GetVersion163dropbox implements IGetVersion {
 	public CheckVersionResult getVersion(String url) {
 		// TODO Auto-generated method stub
 		// 先获取到163上的内容
-		String html = getHtml(url);
+		String html = HtmlUtil.getHtml(url);
 		if(html!=null){
 			// 上面的地址里的内容有：###{packageName:com.xidige.filemanager,versionName:2,versionCode:1.0.1,dropbox::'s/d66us5q4kr3or2d/FileManager_1.0.1.apk'}###
 			Pattern pattern = Pattern.compile("###\\{(.+?)\\}###");
 			Matcher matcher = pattern.matcher(html);
 			if (matcher.find()) {
 				html = matcher.group(1);
-				Log.d(TAG, "匹配到的内容" + html);
+				logger.debug( "匹配到的内容" + html);
 				if (html != null) {
 					html = "{" + html + "}";// 原来那个是没有括号的
 					ByteArrayInputStream in = null;
@@ -91,10 +83,10 @@ public class GetVersion163dropbox implements IGetVersion {
 						}
 					} catch (UnsupportedEncodingException e) {
 						// TODO Auto-generated catch block
-						Log.d(TAG, "解析版本信息时错误", e);
+						logger.debug( "解析版本信息时错误", e);
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
-						Log.d(TAG, "解析版本信息时错误", e);
+						logger.debug( "解析版本信息时错误", e);
 					}
 				}
 			}
@@ -109,7 +101,7 @@ public class GetVersion163dropbox implements IGetVersion {
 	 */
 	private String parsetDropboxReal(String gongkai) {
 		// 获取页面内容
-		String html = getHtml(gongkai);
+		String html = HtmlUtil.getHtml(gongkai);
 		if(html!=null){
 			// 里面的下载地址格式是：
 			// https://dl.dropboxusercontent.com/***">
@@ -125,40 +117,5 @@ public class GetVersion163dropbox implements IGetVersion {
 			}
 		}
 		return null;
-	}
-
-	/**
-	 * 获取文本内容
-	 * 
-	 * @param url
-	 * @return
-	 */
-	private String getHtml(String url) {
-		// 构建一个读取网页的对象
-		HttpGet get = new HttpGet(url);
-		HttpResponse response = null;
-		String html = null;
-		InputStream inputStream=null;
-		try {
-			response = httpClient.execute(get);
-			inputStream=response.getEntity()
-					.getContent();
-			html = HtmlUtil.readFromInputStream(inputStream);
-		} catch (ClientProtocolException e) {
-			// TODO Auto-generated catch block
-			Log.d(TAG, "getHtml", e);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			Log.d(TAG, "getHtml", e);
-		}finally{
-			if(inputStream!=null){
-				try {
-					inputStream.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-				}
-			}
-		}
-		return html;
 	}
 }
