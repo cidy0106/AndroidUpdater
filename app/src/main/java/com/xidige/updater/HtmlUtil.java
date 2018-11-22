@@ -1,7 +1,5 @@
 package com.xidige.updater;
 
-import android.util.Log;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,7 +10,6 @@ import java.io.InputStreamReader;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class HtmlUtil {
@@ -47,12 +44,11 @@ public class HtmlUtil {
 
 
 	public static String getHtml(String url) {
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
-
         Response response = null;
         try {
+            Request request = new Request.Builder()
+                    .url(url)
+                    .build();
             response = client.newCall(request).execute();
             return response.body().string();
         } catch (IOException e) {

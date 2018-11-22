@@ -18,8 +18,10 @@ import java.util.regex.Pattern;
  * :'1.0.1',dropbox:'s/d66us5q4kr3or2d/FileManager_1.0.1.apk'}###
  * 
  * @author lenovo
- * 
+ * 163博客做不下去了，关闭了；dropbox国内已不能访问，这里就没用了
+ *
  */
+@Deprecated
 public class GetVersion163dropbox implements IGetVersion {
 	private static Logger logger=LoggerFactory.getLogger(GetVersion163dropbox.class);
 

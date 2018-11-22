@@ -14,17 +14,14 @@ import android.os.IBinder;
 import android.os.Message;
 import android.support.v4.app.NotificationCompat;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 /**
  * fileurl
@@ -33,7 +30,9 @@ import java.net.URL;
  */
 public class UpdateService extends Service {
 	private static Logger logger=LoggerFactory.getLogger(UpdateService.class);
-	
+
+    public static final String ARG_DOWNLOAD_URL = "fileurl";
+
 	//标题
 	private String fileurl=null;//需要下载的文件路径
 	private String titleContent=null;//提示内容
@@ -150,15 +149,6 @@ public class UpdateService extends Service {
 				fos=null;
 				//下载完了
 				handler.sendEmptyMessage(HANDLER_MSG_DOWNLOADOVER);	
-			} catch (MalformedURLException e) {
-				// TODO Auto-generated catch block
-				logger.debug("下载线程发生错误", e);
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				logger.debug("下载线程发生错误", e);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				logger.debug("下载线程发生错误", e);
 			} catch (Exception e) {
 				// TODO: handle exception
 				logger.debug("下载线程发生错误", e);
@@ -198,7 +188,7 @@ public class UpdateService extends Service {
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 	    //获取传值
-		this.fileurl=intent.getStringExtra("fileurl");
+        this.fileurl = intent.getStringExtra(ARG_DOWNLOAD_URL);
 	 
 		this.titleContent=getString(R.string.app_name);
 	    this.updateNotificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
@@ -223,16 +213,14 @@ public class UpdateService extends Service {
 	 * @return
 	 */
 	private File creatTempFile(String filename,String ext){
-		String tempDirStr = null;
+        File dir = null;
 		if (Environment.getExternalStorageState().equals(
 				Environment.MEDIA_MOUNTED)) {
-			tempDirStr = Environment.getExternalStorageDirectory()
-					.getAbsolutePath() + "/download/";
+            dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 		} else {
-			tempDirStr = getApplicationContext().getFilesDir()
-					.getAbsolutePath();
-		}
-		File dir = new File(tempDirStr);
+            dir = getApplicationContext().getFilesDir();
+        }
+
 		if (!dir.exists()) {
 			dir.mkdir();
 		}

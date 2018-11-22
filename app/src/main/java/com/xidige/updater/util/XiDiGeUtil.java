@@ -36,7 +36,7 @@ public class XiDiGeUtil {
 	/**
 	 * 发送邮件
 	 * @param context
-	 * @param emailaddr 邮件地址：cidy0106@hotmail.com
+     * @param emailaddr 邮件地址：cidy0106@gmail.com
 	 * @param title 标题
 	 * @param content 内容
 	 */

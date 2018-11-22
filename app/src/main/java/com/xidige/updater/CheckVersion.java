@@ -18,9 +18,14 @@ import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import android.util.Log;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class CheckVersion implements Runnable {
+    private static Logger logger = LoggerFactory.getLogger(CheckVersion.class);
+
+
     private static final String TAG = "com.xidige.updater.CheckVersion";
     public static final String PREFRENCE_DOWNLOAD_KEY = "prefrence_download_key";
     //通知栏跳转Intent
@@ -109,7 +114,7 @@ public class CheckVersion implements Runnable {
             versionCode = context.getPackageManager().getPackageInfo(
                     packagename, 0).versionCode;
         } catch (NameNotFoundException e) {
-            Log.d(TAG, e.toString());
+            logger.debug("getVersionCode", e.toString());
         }
         return versionCode;
     }
@@ -177,7 +182,7 @@ public class CheckVersion implements Runnable {
                     //这里为了把update更好模块化，可以传一些updateService依赖的值
                     //如布局ID，资源ID，动态获取的标题,这里以app_name为例
                     Intent updateIntent = new Intent(context, UpdateService.class);
-                    updateIntent.putExtra("fileurl", fileurl);
+                    updateIntent.putExtra(UpdateService.ARG_DOWNLOAD_URL, fileurl);
                     context.startService(updateIntent);
                 }
             }

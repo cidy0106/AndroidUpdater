@@ -2,5 +2,5 @@ package com.xidige.updater;
 
 
 public interface IGetVersion {
-    CheckVersionResult getVersion(String url);
+    CheckVersionResult getVersion(String str);
 }
